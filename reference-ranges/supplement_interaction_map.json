@@ -1,0 +1,114 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "Supplement-to-biomarker interaction map. Used in Vector 3 analysis for mechanistic rationale and antagonistic interaction flags.",
+    "last_updated": "2026-05-23"
+  },
+  "liver_support": {
+    "NAC": {
+      "effect": "Glutathione precursor - replenishes hepatic antioxidant capacity",
+      "targets": ["ALT", "AST", "GGT"],
+      "indication": "ALT or AST >2x optimal, hepatotoxic compound use",
+      "dose": "600-1800 mg/day divided doses",
+      "timing": "With meals",
+      "synergistic_with": ["TUDCA", "Alpha-Lipoic Acid", "Milk Thistle"],
+      "caution": "Separate from antibiotics by 2 hours"
+    },
+    "TUDCA": {
+      "effect": "Bile acid chaperone - reduces ER stress and hepatocyte apoptosis",
+      "targets": ["ALT", "AST", "GGT"],
+      "indication": "Hepatotoxic compound stack, persistent ALT elevation",
+      "dose": "250-1000 mg/day",
+      "synergistic_with": ["NAC", "Milk Thistle"]
+    },
+    "Milk_Thistle_Silymarin": {
+      "effect": "Hepatoprotective, antifibrotic flavonolignan complex",
+      "targets": ["ALT", "AST", "GGT"],
+      "dose": "400-800 mg/day standardized 70-80% silymarin",
+      "caution": "Weak CYP3A4 inhibitor"
+    }
+  },
+  "cardiovascular_lipid": {
+    "Citrus_Bergamot": {
+      "effect": "HMG-CoA reductase inhibition, TG reduction, HDL improvement",
+      "targets": ["ApoB", "LDL-C", "Triglycerides", "HDL-C"],
+      "indication": "ApoB >100, TG >120, TG:HDL >2.0",
+      "dose": "500-1000 mg/day standardized extract",
+      "timing": "With largest meal",
+      "synergistic_with": ["CoQ10", "Omega-3 FA", "Berberine"],
+      "caution": "Mild anticoagulant - monitor with blood thinners"
+    },
+    "CoQ10_Ubiquinol": {
+      "effect": "Mitochondrial electron chain cofactor, counters statin CoQ10 depletion",
+      "targets": ["Hs-CRP", "cardiovascular_risk"],
+      "dose": "200-400 mg/day ubiquinol form preferred",
+      "timing": "With fat-containing meal"
+    },
+    "Omega3_FA_EPA_DHA": {
+      "effect": "TG reduction, anti-inflammatory, platelet aggregation reduction",
+      "targets": ["Triglycerides", "Hs-CRP", "tg_hdl_ratio"],
+      "dose": "2-4 g/day EPA+DHA combined",
+      "caution": "Anticoagulant at high doses"
+    },
+    "Berberine": {
+      "effect": "AMPK activator - improves insulin sensitivity, reduces TG and glucose",
+      "targets": ["Fasting_Insulin", "Fasting_Glucose", "HbA1c", "Triglycerides"],
+      "dose": "500 mg 2-3x/day with meals",
+      "caution": "CYP3A4 inhibitor. Potentiates metformin. Avoid if on cyclosporine."
+    }
+  },
+  "hormone_support": {
+    "Zinc": {
+      "effect": "5-alpha-reductase cofactor, aromatase modulator, testosterone support",
+      "targets": ["Total_Testosterone", "Free_Testosterone", "Estradiol_E2", "Zinc_serum"],
+      "indication": "Zinc <70 ug/dL, low testosterone, elevated E2",
+      "dose": "25-50 mg/day elemental zinc",
+      "timing": "Away from meals or with small meal",
+      "caution": "High dose (>50mg sustained) depletes Copper. Supplement 2mg Copper with >50mg Zinc."
+    },
+    "Vitamin_D3_K2": {
+      "effect": "Testosterone synthesis support, immune modulation, calcium metabolism",
+      "targets": ["Vitamin_D3", "Total_Testosterone"],
+      "indication": "Vitamin D3 <40 ng/mL",
+      "dose": "2000-5000 IU D3 daily + 100-200 mcg K2 MK-7",
+      "monitoring": "Retest Vitamin D3 in 90 days"
+    },
+    "Ashwagandha_KSM66": {
+      "effect": "Cortisol reduction, testosterone support, HPA axis modulation",
+      "targets": ["Cortisol", "Total_Testosterone", "Subjective_Stress"],
+      "indication": "Cortisol >20, overtraining signs, low testosterone with high stress",
+      "dose": "300-600 mg/day KSM-66 standardized extract"
+    },
+    "DHEA": {
+      "effect": "Adrenal androgen precursor, downstream testosterone/estrogen conversion",
+      "targets": ["DHEA_S", "Total_Testosterone"],
+      "indication": "DHEA-S <200 ug/dL, aging clients",
+      "dose": "25-50 mg/day",
+      "caution": "Physician oversight required. Can elevate estradiol via aromatization."
+    }
+  },
+  "micronutrient_repletion": {
+    "Magnesium_Glycinate": {
+      "effect": "700+ enzymatic reactions, sleep quality, insulin sensitivity, blood pressure",
+      "targets": ["Magnesium_RBC", "Fasting_Insulin", "Sleep_Quality", "HRV"],
+      "indication": "RBC Mg <4.8, poor sleep, muscle cramps, high training volume",
+      "dose": "200-400 mg elemental magnesium at bedtime",
+      "note": "Glycinate or malate forms preferred for bioavailability and GI tolerance"
+    },
+    "Iron_Bisglycinate": {
+      "effect": "Heme synthesis, oxygen transport, energy metabolism",
+      "targets": ["Ferritin", "Hemoglobin"],
+      "indication": "Ferritin <30 ng/mL",
+      "dose": "25-50 mg elemental iron on empty stomach",
+      "caution": "Take with Vitamin C to enhance absorption. Separate from calcium/antacids by 2 hours."
+    }
+  },
+  "antagonistic_interactions": {
+    "Zinc_vs_Copper": "High-dose Zinc (>50mg) depletes Copper. Monitor with serum Copper.",
+    "Iron_vs_Zinc": "Concurrent high-dose Iron and Zinc compete for absorption. Separate by 4 hours.",
+    "Berberine_vs_CYP3A4": "Berberine inhibits CYP3A4. Monitor medications metabolized via this pathway.",
+    "NAC_vs_Antibiotics": "NAC may reduce antibiotic efficacy. Separate by 2 hours.",
+    "Omega3_vs_Anticoagulants": "Omega-3 at >4g/day has anticoagulant effects. Monitor with blood thinners.",
+    "DHEA_vs_Aromatization": "DHEA can elevate estradiol significantly. Monitor E2 closely."
+  }
+}
