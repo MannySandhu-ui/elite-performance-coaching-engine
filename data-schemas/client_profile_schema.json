@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EliteCoachingClientProfile",
+  "description": "Schema for client check-in data ingested by the Elite Performance Coaching Engine. All fields required unless marked optional. Missing required fields must be flagged as [DATA ABSENT].",
+  "type": "object",
+  "required": ["client_id", "checkin_date", "anthropometrics", "blood_panel", "nutrition", "training", "recovery"],
+  "properties": {
+    "client_id": { "type": "string", "description": "Pseudonymized client identifier. No real names." },
+    "checkin_date": { "type": "string", "format": "date" },
+    "checkin_number": { "type": "integer", "minimum": 1 },
+    "sport_goal": { "type": "string" },
+    "current_phase": { "type": "string", "enum": ["Cut", "Bulk", "Maintenance", "Recomp", "Peaking"] },
+    "anthropometrics": {
+      "type": "object",
+      "required": ["body_weight_kg", "lean_body_mass_kg"],
+      "properties": {
+        "body_weight_kg": { "type": "number" },
+        "body_fat_percent": { "type": "number" },
+        "lean_body_mass_kg": { "type": "number" },
+        "height_cm": { "type": "number" },
+        "waist_cm": { "type": "number" },
+        "training_age_years": { "type": "number" }
+      }
+    },
+    "blood_panel": {
+      "type": "object",
+      "properties": {
+        "hormone_axis": {
+          "type": "object",
+          "properties": {
+            "total_testosterone_ng_dL": { "type": ["number", "null"] },
+            "free_testosterone_pg_mL": { "type": ["number", "null"] },
+            "shbg_nmol_L": { "type": ["number", "null"] },
+            "estradiol_E2_pg_mL": { "type": ["number", "null"] },
+            "lh_mIU_mL": { "type": ["number", "null"] },
+            "fsh_mIU_mL": { "type": ["number", "null"] },
+            "prolactin_ng_mL": { "type": ["number", "null"] },
+            "dhea_s_ug_dL": { "type": ["number", "null"] },
+            "cortisol_morning_ug_dL": { "type": ["number", "null"] }
+          }
+        },
+        "metabolic": {
+          "type": "object",
+          "properties": {
+            "apob_mg_dL": { "type": ["number", "null"] },
+            "ldl_c_mg_dL": { "type": ["number", "null"] },
+            "hdl_c_mg_dL": { "type": ["number", "null"] },
+            "triglycerides_mg_dL": { "type": ["number", "null"] },
+            "fasting_insulin_uIU_mL": { "type": ["number", "null"] },
+            "fasting_glucose_mg_dL": { "type": ["number", "null"] },
+            "hba1c_percent": { "type": ["number", "null"] },
+            "hs_crp_mg_L": { "type": ["number", "null"] }
+          }
+        },
+        "organ_health": {
+          "type": "object",
+          "properties": {
+            "ast_U_L": { "type": ["number", "null"] },
+            "alt_U_L": { "type": ["number", "null"] },
+            "ggt_U_L": { "type": ["number", "null"] },
+            "creatinine_mg_dL": { "type": ["number", "null"] },
+            "egfr_mL_min": { "type": ["number", "null"] },
+            "bun_mg_dL": { "type": ["number", "null"] }
+          }
+        },
+        "thyroid": {
+          "type": "object",
+          "properties": {
+            "tsh_uIU_mL": { "type": ["number", "null"] },
+            "free_t3_pg_mL": { "type": ["number", "null"] },
+            "free_t4_ng_dL": { "type": ["number", "null"] }
+          }
+        },
+        "micronutrients_cbc": {
+          "type": "object",
+          "properties": {
+            "ferritin_ng_mL": { "type": ["number", "null"] },
+            "hemoglobin_g_dL": { "type": ["number", "null"] },
+            "hematocrit_percent": { "type": ["number", "null"] },
+            "vitamin_d3_ng_mL": { "type": ["number", "null"] },
+            "vitamin_b12_pg_mL": { "type": ["number", "null"] },
+            "magnesium_rbc_mg_dL": { "type": ["number", "null"] },
+            "zinc_ug_dL": { "type": ["number", "null"] }
+          }
+        }
+      }
+    },
+    "supplement_stack": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "compound": { "type": "string" },
+          "dose_mg": { "type": "number" },
+          "frequency": { "type": "string" }
+        }
+      }
+    },
+    "nutrition": {
+      "type": "object",
+      "required": ["daily_calories_kcal", "protein_g", "carbs_g", "fat_g"],
+      "properties": {
+        "daily_calories_kcal": { "type": "number" },
+        "protein_g": { "type": "number" },
+        "carbs_g": { "type": "number" },
+        "fat_g": { "type": "number" },
+        "water_L": { "type": "number" },
+        "meal_frequency": { "type": "integer" }
+      }
+    },
+    "training": {
+      "type": "object",
+      "required": ["sessions_per_week", "weeks_since_deload"],
+      "properties": {
+        "sessions_per_week": { "type": "integer" },
+        "avg_session_duration_min": { "type": "number" },
+        "primary_modality": { "type": "string", "enum": ["Hypertrophy", "Strength", "Conditioning", "Mixed"] },
+        "weekly_volume_sets": { "type": "number" },
+        "weeks_since_deload": { "type": "integer" }
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "required": ["sleep_hrs", "hrv_ms", "energy_1_to_10"],
+      "properties": {
+        "sleep_hrs": { "type": "number" },
+        "sleep_quality_1_10": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "hrv_ms": { "type": ["number", "null"] },
+        "resting_hr_bpm": { "type": ["number", "null"] },
+        "energy_1_to_10": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "libido_1_to_10": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "mood_1_to_10": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "joint_tendon_pain_notes": { "type": "string" }
+      }
+    },
+    "coach_notes": { "type": "string" }
+  }
+}
